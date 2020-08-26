@@ -995,6 +995,7 @@ export default {
 
 #stac-browser .tabs {
   margin-top: 25px;
+  height: auto;
 }
 
 #stac-browser .table th,
