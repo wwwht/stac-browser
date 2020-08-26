@@ -437,14 +437,14 @@ export default {
       return this.selectedFeatures.href;
     },
     item() {
-      if (this.entity.type === "FeatureCollection") {
+      if (this._entity.type === "FeatureCollection") {
         const { hash } = url.parse(this.url);
         const idx = hash.slice(1);
 
-        return this.entity.features[idx];
+        return this._entity.features[idx];
       }
 
-      return this.entity;
+      return this._entity;
     },
     jsonLD() {
       const dataset = {
