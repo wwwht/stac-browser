@@ -124,20 +124,20 @@ export default async (CATALOG_URL, INDEX_PATH) => {
 
   const routes = [
     {
-      path: "/item/:path*",
+      path: "/item/(.*)",
       component: Item,
       props: route => {
         let ancestors = [CATALOG_URL];
 
-        if (route.params.path != null) {
+        if (route.params.pathMatch) {
           ancestors = ancestors.concat(
-            route.params.path.split("/").map(decode)
+            route.params.pathMatch.split("/").map(decode)
           );
         }
 
         let center = null;
 
-        if (route.hash != "") {
+        if (route.hash) {
           center = route.hash.slice(1).split("/");
         }
 
@@ -153,14 +153,14 @@ export default async (CATALOG_URL, INDEX_PATH) => {
       }
     },
     {
-      path: "/collection/:path*",
+      path: "/collection/(.*)",
       component: Catalog,
       props: route => {
         let ancestors = [CATALOG_URL];
 
-        if (route.params.path != null) {
+        if (route.params.pathMatch) {
           ancestors = ancestors.concat(
-            route.params.path.split("/").map(decode)
+            route.params.pathMatch.split("/").map(decode)
           );
         }
 
@@ -175,14 +175,14 @@ export default async (CATALOG_URL, INDEX_PATH) => {
       }
     },
     {
-      path: "/:path*",
+      path: "/(.*)",
       component: Catalog,
       props: route => {
         let ancestors = [CATALOG_URL];
 
-        if (route.params.path != null) {
+        if (route.params.pathMatch) {
           ancestors = ancestors.concat(
-            route.params.path.split("/").map(decode)
+            route.params.pathMatch.split("/").map(decode)
           );
         }
 
@@ -291,9 +291,9 @@ export default async (CATALOG_URL, INDEX_PATH) => {
       return next(persistedState.path);
     }
 
-    if (to.params.path != null) {
+    if (to.params.pathMatch != null) {
       // pre-load all known entities
-      const urls = to.params.path
+      const urls = to.params.pathMatch
         .split("/")
         .reverse()
         .map(decode);
