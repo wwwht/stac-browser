@@ -1,6 +1,5 @@
 import url from "url";
 
-import clone from "clone";
 import { HtmlRenderer, Parser } from "commonmark";
 import escape from "lodash.escape";
 import isEqual from "lodash.isequal";
@@ -65,14 +64,7 @@ export default {
       return (this.collection && this.collection.properties) || {};
     },
     _entity() {
-      const entity = this.getEntity(this.url);
-
-      if (entity instanceof Error) {
-        this.$router.replace("/");
-        return;
-      }
-
-      return entity;
+      return this.getEntity(this.url);
     },
     _keywords() {
       // [].concat() is a work-around for catalogs where keywords is a string (SpaceNet)
@@ -141,8 +133,14 @@ export default {
         MARKDOWN_WRITER.render(MARKDOWN_READER.parse(this._description))
       );
     },
+    errored() {
+      return (this._entity instanceof Error);
+    },
     entity() {
-      return this._entity;
+      if (this.errored) {
+        return {};
+      }
+      return this._entity || {};
     },
     id() {
       // REQUIRED
@@ -186,7 +184,7 @@ export default {
       return this.entity.links || [];
     },
     loaded() {
-      return this.entity != null;
+      return Object.keys(this.entity).length > 0;
     },
     propertyList() {
       const skip = key => propertyMap[key] && propertyMap[key].skip;
@@ -393,7 +391,7 @@ export default {
             const { value } = jsonQuery(err.dataPath, {
               data
             });
-            console.warn(clone(value));
+            console.warn(value);
           });
           console.groupEnd();
         }

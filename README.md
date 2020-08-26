@@ -8,10 +8,6 @@ implemented as a single page application (SPA) for ease of development and to
 limit the overall number of catalog reads necessary when browsing (as catalogs
 may be nested and do not necessarily contain references to their parents).
 
-<a href="https://www.netlify.com">
-  <img src="https://www.netlify.com/img/global/badges/netlify-light.svg"/>
-</a>
-
 ## Examples
 
 * [planet.stac.cloud](https://planet.stac.cloud) ([catalog on GitHub](https://github.com/cholmes/pdd-stac/))
@@ -42,76 +38,16 @@ variable e.g.:
 STAC_VERSION=0.6.0 CATALOG_URL=http://path/to/catalog.json npm start -- --open
 ```
 
-STAC Browser defaults to using [HTML5 History
-Mode](https://router.vuejs.org/guide/essentials/history-mode.html), which can
-cause problems on certain web hosts. To use _hash mode_, set
-`HISTORY_MODE=hash` when running or building. This will be compatible with
-S3, stock Apache, etc.
-
 ## Building
 
 ```bash
 CATALOG_URL=http://path/to/catalog.json npm run build
 ```
 
-## Prerendering
-
-STAC Browser includes the ability to prerender catalog pages to HTML using
-[Puppeteer](https://github.com/GoogleChrome/puppeteer) to control a headless
-Chromium instance. This facilitates search engine indexing, as metadata and
-content will be present in the HTML prior to loading external catalogs.
-
-To prerender, run:
-
-```bash
-bin/prerender.js -p <public URL> <catalog URL>
-```
-
-`dist/` will contain all assets necessary to host the browser.
-
-After publishing (see below), the generated sitemap can be submitted for
-crawling by Google:
-
-```bash
-curl http://www.google.com/ping?sitemap=https://planet.stac.cloud/sitemap.txt
-```
-
 ## Publishing
 
-After building or prerendering, `dist/` will contain all assets necessary to
+After building, `dist/` will contain all assets necessary to
 host the browser. These can be manually copied to your web host of choice.
-
-Alternately, you can publish to [Netlify](https://www.netlify.com/) for free.
-
-First, create a new site:
-
-```bash
-node_modules/.bin/netlify init
-```
-
-The generated site id will be used as `NETLIFY_SITE_ID` in your environment.
-
-To deploy without prerendering:
-
-```bash
-CATALOG_URL=... NETLIFY_SITE_ID=... npm run deploy
-```
-
-To deploy a prerendered version you'll also need the target URL:
-
-```bash
-CATALOG_URL=... NETLIFY_SITE_ID=... STAC_URL=... npm run deploy-prerendered
-```
-
-## Crawling
-
-To facilitate prerendering, STAC Browser includes functionality for crawling
-catalogs in `bin/crawl.js`.
-
-As-is, this will just output the type and URL for all entries in the catalog.
-In real-world use, you'll probably want to use it as an example and write
-custom JavaScript to process each entry (similar to how `bin/prerender.js`
-uses it).
 
 ## Contributing
 

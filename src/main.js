@@ -1,7 +1,8 @@
 import path from "path";
 import url from "url";
 
-import "@babel/polyfill";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import "es6-promise/auto";
 import AsyncComputed from "vue-async-computed";
 import BootstrapVue from "bootstrap-vue";
@@ -23,8 +24,6 @@ import { fetchUri, fetchSchemaValidator } from "./util";
 import Catalog from "./components/Catalog.vue";
 import Item from "./components/Item.vue";
 
-import VueConfig from "../vue.config.js";
-
 Vue.component("multiselect", Multiselect);
 
 Vue.use(AsyncComputed);
@@ -34,35 +33,8 @@ Vue.use(Meta);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-const API = process.env.NODE_ENV === 'production' ? 'http://stac-index-srv.lutana.de' : 'http://localhost:9999'
 
-const main = async () => {
-
-  if (typeof window.location.search !== 'string' || window.location.search.length < 2) {
-    document.write("Unable to read ID from query string");
-    return;
-  }
-
-  const ID = window.location.search.substr(1);
-
-  try {
-    var CATALOG_URL = null;
-    const rsp = await fetchUri(API + '/collections/' + ID);
-    if (!rsp.ok) {
-      document.write("Can't load collection from server.");
-      return;
-    }
-    const entity = await rsp.json();
-    if (!entity) {
-      document.write("Collection not available.");
-      return;
-    }
-    CATALOG_URL = entity.url;
-  } catch (err) {
-    document.write("Can't load catalog. Likely a CORS issue.");
-    document.write(err.message);
-    return;
-  }
+export default async (CATALOG_URL, INDEX_PATH) => {
   
   const makeRelative = uri => {
     const rootURI = url.parse(CATALOG_URL);
@@ -285,12 +257,11 @@ const main = async () => {
               commit("LOADED", { entity, url });
             }
           } else {
-            commit("FAILED", { err: new Error(await rsp.text()), url });
+            let errormsg = await rsp.text();
+            commit("FAILED", { err: new Error(errormsg), url });
           }
         } catch (err) {
           console.warn(err);
-          document.writeln("Can't load data. Likely a CORS issue:");
-          document.write(err.message);
           commit("FAILED", { err, url });
         }
       }
@@ -299,12 +270,10 @@ const main = async () => {
   });
 
   const router = new VueRouter({
-    base: VueConfig.publicPath || "/",
+    base: INDEX_PATH,
     mode: "hash",
     routes
   });
-
-  window.router = router;
 
   await store.dispatch("load", CATALOG_URL);
 
@@ -337,20 +306,11 @@ const main = async () => {
     return next();
   });
 
-  // initial load
-  let el = document.getElementById("app");
-
-  // replace existing content
-  if (document.getElementById("rendered") != null) {
-    el = document.getElementById("rendered");
-  }
-
-  new Vue({
+  let el = document.getElementById("stac-browser");
+  return new Vue({
     el,
     router,
     store,
-    template: `<router-view id="rendered" />`
+    template: `<router-view id="stac-browser" />`
   });
 };
-
-main();
