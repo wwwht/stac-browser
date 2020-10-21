@@ -32,7 +32,7 @@
     "spdx-license-ids": "^3.0.5",
     "spdx-to-html": "^0.3.2",
     "v-clipboard": "^2.2.2",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-async-computed": "^3.7.0",
     "vue-meta": "^2.2.2",
     "vue-multiselect": "^2.1.6",
@@ -46,6 +46,6 @@
     "@vue/component-compiler-utils": "^3.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-runtime": "^6.26.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   }
 }

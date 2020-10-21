@@ -20,6 +20,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "leaflet/dist/leaflet.css";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 
+import { STAC_VERSION } from './config';
 import { fetchUri, fetchSchemaValidator } from "./util";
 import Catalog from "./components/Catalog.vue";
 import Item from "./components/Item.vue";
@@ -33,9 +34,7 @@ Vue.use(Meta);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-
 export default async (CATALOG_URL, INDEX_PATH) => {
-  
   const makeRelative = uri => {
     const rootURI = url.parse(CATALOG_URL);
     const localURI = url.parse(uri);
@@ -60,7 +59,13 @@ export default async (CATALOG_URL, INDEX_PATH) => {
    */
   const slugify = uri => bs58.encode(Buffer.from(makeRelative(uri)));
   
-  const resolve = (href, base = CATALOG_URL) => new URL(href, base).toString();
+  const resolve = (href, base = CATALOG_URL) => {
+    // Encode colons from all but schema, as they create errors in URL resolving.
+    const hrefEncoded =
+          href.replace(':', encodeURIComponent(':'))
+              .replace(encodeURIComponent(':') + '//', '://');
+    return new URL(hrefEncoded, base).toString();
+  };
   
   function decode(s) {
     try {
@@ -70,7 +75,6 @@ export default async (CATALOG_URL, INDEX_PATH) => {
       return CATALOG_URL;
     }
   }
-
 
   let persistedState = {};
   const renderedState = document.querySelector(
@@ -86,7 +90,7 @@ export default async (CATALOG_URL, INDEX_PATH) => {
   }
 
   const collectionValidator = async (data) => {
-    const stacVersion = data.stac_version || "0.7.0";
+    const stacVersion = data.stac_version || STAC_VERSION;
 
     let validateCollection = await fetchSchemaValidator("collection", stacVersion);
     if (!validateCollection(data)) {
@@ -101,7 +105,7 @@ export default async (CATALOG_URL, INDEX_PATH) => {
       return collectionValidator(data);
     }
 
-    const stacVersion = data.stac_version || "0.7.0";
+    const stacVersion = data.stac_version || STAC_VERSION;
 
     let validateCatalog = await fetchSchemaValidator("catalog", stacVersion);
 
@@ -113,7 +117,7 @@ export default async (CATALOG_URL, INDEX_PATH) => {
   };
 
   const itemValidator = async (data) => {
-    const stacVersion = data.stac_version || "0.7.0";
+    const stacVersion = data.stac_version || STAC_VERSION;
 
     let validateItem = await fetchSchemaValidator("item", stacVersion);
     if (!validateItem(data)) {
