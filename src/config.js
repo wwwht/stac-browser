@@ -1,1 +1,3 @@
-export const STAC_VERSION = "0.9.0";
+export const CATALOG_URL = "";
+
+export const STAC_VERSION = "0.7.0";

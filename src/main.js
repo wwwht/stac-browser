@@ -20,7 +20,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "leaflet/dist/leaflet.css";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 
-import { STAC_VERSION } from './config';
+import { STAC_VERSION, CATALOG_URL } from './config';
 import { fetchUri, fetchSchemaValidator } from "./util";
 import Catalog from "./components/Catalog.vue";
 import Item from "./components/Item.vue";
@@ -34,7 +34,7 @@ Vue.use(Meta);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-export default async (CATALOG_URL, INDEX_PATH) => {
+async function main(CATALOG_URL, INDEX_PATH) {
   const makeRelative = uri => {
     const rootURI = url.parse(CATALOG_URL);
     const localURI = url.parse(uri);
@@ -324,3 +324,9 @@ export default async (CATALOG_URL, INDEX_PATH) => {
     template: `<router-view id="stac-browser" />`
   });
 };
+
+export default main;
+
+if (CATALOG_URL) {
+  main(CATALOG_URL, '/');
+}
