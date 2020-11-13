@@ -100,12 +100,6 @@ async function main(CATALOG_URL, INDEX_PATH) {
   };
 
   const catalogValidator = async (data) => {
-    if (Array.isArray(data.collections) && Array.isArray(data.links)) {
-      // TODO: Validate the Collections API (/collections)
-      // Skip Collections API validation for now
-      return null;
-    }
-
     if (data.license || data.extent) {
       // contains Collection properties
       return collectionValidator(data);
