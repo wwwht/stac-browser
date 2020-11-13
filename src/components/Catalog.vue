@@ -50,7 +50,7 @@
           
           <p v-if="openEO">
             <br />
-            <b-button variant="outline-primary" :href="openEO" target="_blank">Discover in openEO Web Editor</b-button>
+            <b-button variant="outline-dark" :href="openEO" target="_blank">Discover in openEO Web Editor</b-button>
           </p>
 
           <b-tabs v-model="tabIndex">
