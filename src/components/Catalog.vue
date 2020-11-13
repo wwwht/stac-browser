@@ -433,6 +433,7 @@ export default {
     bands() {
       return (
         this._properties["eo:bands"] ||
+        this.summaries['eo:bands'] ||
         (this.rootCatalog &&
           this.rootCatalog.properties &&
           this.rootCatalog.properties["eo:bands"]) ||
@@ -681,7 +682,7 @@ export default {
       return bbox;
     },
     summaries() {
-      return this.catalog.summaries;
+      return this.catalog.summaries || {};
     },
     tabIndex: {
       get: function() {
