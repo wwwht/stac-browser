@@ -161,6 +161,11 @@
                 striped
               />
             </b-tab>
+            <ZarrMetadataTab
+              v-if="visibleTabs.includes('zarrMetadata')"
+              :active="false"
+              :zarr-metadata-url="zarrMetadataUrl"
+            ></ZarrMetadataTab>
             <AssetTab
               v-if="visibleTabs.includes('assets')"
               :assets="assets"
@@ -245,7 +250,11 @@ export default {
       required: true
     }
   },
-  components: { AssetTab, MetadataSidebar },
+  components: {
+    AssetTab,
+    ZarrMetadataTab: () => import('./ZarrMetadataTab.vue'),
+    MetadataSidebar
+  },
   data() {
     return {
       externalItemCount: 0,
@@ -730,7 +739,8 @@ export default {
         (this.hasExternalItems || this.itemCount > 0) && "items",
         this.bands.length > 0 && "bands",
         this.summaries && "summaries",
-        this.assets && this.assets.length > 0 && "assets"
+        this.assets && this.assets.length > 0 && "assets",
+        this.zarrMetadataUrl && "zarrMetadata"
       ].filter(x => x != null && x !== false);
     }
   },
