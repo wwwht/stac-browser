@@ -27,6 +27,31 @@ function formatObject(obj) {
 const enrichPropertyDefinitions = (propertyDefinitions) => {
   const propertyMap = propertyDefinitions.properties;
 
+  const formatArray = (values, sort = false) => {
+    let list = values;
+    if (sort) {
+      list = list.slice(0).sort();
+    }
+    list = list.map(v => formatValue(key, v));
+    if (list.length > 1) {
+      return "<ul><li>" + list.join("</li><li>") + "</li></ul>";
+    }
+    else {
+      return list[0];
+    }
+  }
+  
+  const formatObject = (obj) => {
+    let props = [];
+    for(let type in obj) {
+      let label = type.split(":").map(part => part.substr(0, 1).toUpperCase() + part.substr(1));
+      let formatted = formatValue(key, obj[type]);
+      props.push(`<strong>${label}</strong>: ${formatted}`);
+    }
+    return props.join("<br />");
+  }
+  
+
   const formatValue = (key, value) => {
     let suffix = "";
   
