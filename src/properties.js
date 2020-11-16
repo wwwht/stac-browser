@@ -1,33 +1,9 @@
-function formatArray(values, sort = false) {
-  let list = values;
-  if (sort) {
-    list = list.slice(0).sort();
-  }
-  list = list.map(v => formatValue(key, v));
-  if (list.length > 1) {
-    return "<ul><li>" + list.join("</li><li>") + "</li></ul>";
-  }
-  else {
-    return list[0];
-  }
-}
-
-function formatObject(obj) {
-  let props = [];
-  for(let type in obj) {
-    let label = type.split(":").map(part => part.substr(0, 1).toUpperCase() + part.substr(1));
-    let formatted = formatValue(key, obj[type]);
-    props.push(`<strong>${label}</strong>: ${formatted}`);
-  }
-  return props.join("<br />");
-}
- 
 // This method enriches the property definition object with methods
 // for formatting property labels and values.
 const enrichPropertyDefinitions = (propertyDefinitions) => {
   const propertyMap = propertyDefinitions.properties;
 
-  const formatArray = (values, sort = false) => {
+  const formatArray = (key, values, sort = false) => {
     let list = values;
     if (sort) {
       list = list.slice(0).sort();
@@ -41,7 +17,7 @@ const enrichPropertyDefinitions = (propertyDefinitions) => {
     }
   }
   
-  const formatObject = (obj) => {
+  const formatObject = (key, obj) => {
     let props = [];
     for(let type in obj) {
       let label = type.split(":").map(part => part.substr(0, 1).toUpperCase() + part.substr(1));
@@ -147,11 +123,11 @@ const enrichPropertyDefinitions = (propertyDefinitions) => {
     }
   
     if (Array.isArray(value)) {
-      return formatArray(value);
+      return formatArray(key, value);
     }
   
     if (typeof value === "object") {
-      return formatObject(value);
+      return formatObject(key, value);
     }
   
     return value + suffix;
@@ -168,10 +144,10 @@ const enrichPropertyDefinitions = (propertyDefinitions) => {
     },
     formatSummaryValues: (key, values) => {
       if (Array.isArray(values)) {
-        return formatArray(values, true);
+        return formatArray(key, values, true);
       }
       else if (values && typeof values === 'object') {
-        return formatObject(values);
+        return formatObject(key, values);
       }
       
       return formatValue(key, values);
