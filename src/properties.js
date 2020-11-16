@@ -21,7 +21,7 @@ function formatObject(obj) {
   }
   return props.join("<br />");
 }
-
+ 
 // This method enriches the property definition object with methods
 // for formatting property labels and values.
 const enrichPropertyDefinitions = (propertyDefinitions) => {
