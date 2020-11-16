@@ -212,6 +212,8 @@ import MetadataSidebar from './MetadataSidebar.vue'
 
 import { transformCatalog } from "../migrate"
 
+import { fetchUri } from "../util";
+
 const ITEMS_PER_PAGE = 25;
 
 export default {
@@ -309,7 +311,7 @@ export default {
         }
 
         try {
-          const rsp = await fetch(externalCollections.href);
+          const rsp = await fetchUri(externalCollections.href);
           if (!rsp.ok) {
             console.warn(await rsp.text());
             return [];
@@ -338,14 +340,15 @@ export default {
                 }
               }
 
-              const slug = this.slugify(this.resolve(href, this.url));
+              const resolved = this.resolve(href, this.url);
+              const slug = this.slugify(resolved);
               const to = [p, slug].join("");
 
               return Object.assign(collection, {
                 path: href,
                 to,
                 title: collection.title || collection.id || href,
-                url: this.resolve(href, this.url)
+                url: resolved
               });
             });
         } catch (err) {
@@ -366,7 +369,7 @@ export default {
         }
 
         try {
-          const rsp = await fetch(
+          const rsp = await fetchUri(
             `${externalItemsLink.href}?page=${this.currentItemPage}`
           );
 
@@ -466,7 +469,8 @@ export default {
             p += "/";
           }
 
-          const slug = this.slugify(this.resolve(child.href, this.url));
+          const resolved = this.resolve(child.href, this.url);
+          const slug = this.slugify(resolved);
           const to = [p, slug].join("");
 
           return {
@@ -474,7 +478,7 @@ export default {
             to,
             // child.id is a workaround for https://earthengine-stac.storage.googleapis.com/catalog/catalog.json
             title: child.title || child.id || child.href,
-            url: this.resolve(child.href, this.url)
+            url: resolved
           };
         });
     },

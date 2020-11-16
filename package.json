@@ -48,4 +48,5 @@
     "babel-runtime": "^6.26.0",
     "vue-template-compiler": "^2.6.12"
   }
+  }
 }
