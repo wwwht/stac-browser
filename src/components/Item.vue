@@ -773,7 +773,7 @@ export default {
 </script>
 
 <style>
-@media (min-width: 1200px) {
+@media (min-width: 1900px) {
   #stac-browser .container, #stac-browser .container-sm, #stac-browser .container-md, #stac-browser .container-lg, #stac-browser .container-xl {
       max-width: 1600px;
   }
