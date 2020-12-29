@@ -768,14 +768,6 @@ export default {
 </script>
 
 <style>
-@media (min-width: 1900px) {
-  #stac-browser .container, #stac-browser .container-sm, #stac-browser .container-md, #stac-browser .container-lg, #stac-browser .container-xl {
-      max-width: 1600px;
-  }
-}
-#stac-browser {
-  font-size: 0.95em;
-}
 #stac-browser h1,
 #stac-browser h2,
 #stac-browser h3,
