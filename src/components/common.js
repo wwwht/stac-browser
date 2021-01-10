@@ -237,15 +237,17 @@ export default {
       return `https://spdx.org/licenses/${this._license}.html`;
     },
     links() {
-      if (typeof this.entity.links === "object") {
-        // previous STAC version specified links as an object (SpaceNet MVS Dataset)
-        return Object.values(this.entity.links);
-      }
-
-      return this.entity.links || [];
+      return Array.isArray(this.entity.links) ? this.entity.links :[];
     },
     loaded() {
       return Object.keys(this.entity).length > 0;
+    },
+    nextPage() {
+      let nextLink = this.links.find(x => x.rel === "next");
+      if (typeof nextLink.href === 'string') {
+        return nextLink;
+      }
+      return null;
     },
     providers() {
       return this._providers.map(x => ({

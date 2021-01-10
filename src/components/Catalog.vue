@@ -548,7 +548,10 @@ export default {
       return this.externalItems;
     },
     itemsPerPage() {
-      if (this.externalItemPaging) {
+      if (this.nextLink) {
+        return this._items.length;
+      }
+      else if (this.externalItemPaging) {
         return this.externalItemsPerPage;
       }
 
