@@ -1,0 +1,188 @@
+{
+    "id": "vegas",
+    "stac_version": "1.0.0-beta.2",
+    "description": "Vegas SpaceNet 2 dataset",
+    "links": [
+        {
+            "rel": "root",
+            "href": "../catalog.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img10/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img10.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1003/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1003.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1004/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1004.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1006/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1006.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1007/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1007.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1009/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1009.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img101/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img101.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1010/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1010.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img10/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img10.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1003/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1003.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1004/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1004.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1006/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1006.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1007/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1007.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1009/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1009.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img101/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img101.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1010/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1010.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img10/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img10.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1003/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1003.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1004/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1004.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1006/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1006.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1007/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1007.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1009/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1009.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img101/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img101.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "item",
+            "href": "./SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1010/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1010.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "parent",
+            "href": "../catalog.json",
+            "type": "application/json"
+        }
+    ],
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    -115.3075176,
+                    36.1265426997,
+                    -115.2776826,
+                    36.2072726999
+                ]
+            ]
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "2021-04-26T00:00:00Z",
+                    null
+                ]
+            ]
+        }
+    },
+    "license": "proprietary"
+}

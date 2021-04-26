@@ -1,0 +1,17 @@
+{
+    "id": "spacenet",
+    "stac_version": "1.0.0-beta.2",
+    "description": "paceNet 2 STAC",
+    "links": [
+        {
+            "rel": "root",
+            "href": "./catalog.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "child",
+            "href": "./vegas/collection.json",
+            "type": "application/json"
+        }
+    ]
+}

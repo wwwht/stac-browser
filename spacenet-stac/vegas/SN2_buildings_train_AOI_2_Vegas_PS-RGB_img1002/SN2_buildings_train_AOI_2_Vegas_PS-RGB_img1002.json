@@ -1,0 +1,66 @@
+{
+    "type": "Feature",
+    "stac_version": "1.0.0-beta.2",
+    "id": "SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002",
+    "properties": {
+        "datetime": "2021-04-26T00:00:00Z"
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -115.2776826,
+                    36.1791926998
+                ],
+                [
+                    -115.2776826,
+                    36.1809476998
+                ],
+                [
+                    -115.2794376,
+                    36.1809476998
+                ],
+                [
+                    -115.2794376,
+                    36.1791926998
+                ],
+                [
+                    -115.2776826,
+                    36.1791926998
+                ]
+            ]
+        ]
+    },
+    "links": [
+        {
+            "rel": "root",
+            "href": "../../catalog.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "collection",
+            "href": "../collection.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "parent",
+            "href": "../collection.json",
+            "type": "application/json"
+        }
+    ],
+    "assets": {
+        "image": {
+            "href": "https://wht-test.obs.cn-north-4.myhuaweicloud.com/image/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002.tif",
+            "type": "image/tiff; application=geotiff",
+            "title": "Geotiff"
+        }
+    },
+    "bbox": [
+        -115.2794376,
+        36.1791926998,
+        -115.2776826,
+        36.1809476998
+    ],
+    "collection": "vegas"
+}
