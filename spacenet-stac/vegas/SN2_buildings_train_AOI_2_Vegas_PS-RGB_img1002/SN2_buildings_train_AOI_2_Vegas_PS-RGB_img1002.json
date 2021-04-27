@@ -51,7 +51,7 @@
     ],
     "assets": {
         "image": {
-            "href": "https://wht-test.obs.cn-north-4.myhuaweicloud.com/image/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002.tif",
+            "href": "https://github.com/wwwht/stac-browser/blob/master/image/SN2_buildings_train_AOI_2_Vegas_PS-RGB_img1002.tif?raw=true/",
             "type": "image/tiff; application=geotiff",
             "title": "Geotiff"
         }
